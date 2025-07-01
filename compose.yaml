@@ -1,0 +1,18 @@
+# Define a versão da sintaxe do Docker Compose.
+version: '3.8'
+
+services:
+  # Define o nome do nosso serviço de banco de dados.
+  postgres:
+    # A imagem que o Docker vai usar. 'postgres:latest' pega a versão mais recente.
+    image: 'postgres:latest'
+    
+    # Variáveis de ambiente para configurar o container do PostgreSQL.
+    environment:
+      - 'POSTGRES_DB=gamestorerest'   # O nome do banco de dados que será criado.
+      - 'POSTGRES_PASSWORD=postgres'  # A senha do superusuário.
+      - 'POSTGRES_USER=postgres'      # O nome do superusuário.
+
+    # Mapeia as portas. Essencial para que sua aplicação Spring consiga "conversar" com o banco.
+    ports:
+      - '5432:5432' # Mapeia a porta 5432 da sua máquina (host) para a porta 5432 do container (guest).
