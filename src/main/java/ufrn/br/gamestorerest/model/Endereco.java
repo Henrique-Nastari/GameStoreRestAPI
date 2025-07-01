@@ -25,8 +25,7 @@ public class Endereco {
     private String cidade;
     private String uf;
 
-    // Define o lado inverso da relação 1-1
     @OneToOne(mappedBy = "endereco")
-    @JsonBackReference // Evita o loop no JSON
+    @JsonBackReference
     private Usuario usuario;
 }

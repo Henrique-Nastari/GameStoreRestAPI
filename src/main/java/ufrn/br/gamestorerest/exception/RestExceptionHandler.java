@@ -24,7 +24,7 @@ public class RestExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
     }
 
-    // MÉTOD0 PARA TRATAR ERROS DE PERMISSÃO
+    // TRATA ERROS DE PERMISSÃO
     @ExceptionHandler(SecurityException.class)
     public ResponseEntity<ApiErrorDTO> tratarErro403(SecurityException ex, HttpServletRequest request) {
         ApiErrorDTO erro = new ApiErrorDTO(

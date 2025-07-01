@@ -57,9 +57,7 @@ public class CategoriaService {
         if (!repository.existsById(id)) {
             throw new EntityNotFoundException("Categoria com ID " + id + " não encontrada para deleção.");
         }
-        // CUIDADO: Em uma aplicação real, antes de deletar uma categoria,
-        // seria preciso verificar se não existem produtos associados a ela.
-        // Para nosso projeto, uma deleção direta é suficiente por enquanto.
+
         repository.deleteById(id);
     }
 }

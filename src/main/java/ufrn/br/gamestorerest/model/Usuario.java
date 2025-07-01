@@ -27,6 +27,6 @@ public class Usuario {
     // --- RELACIONAMENTO 1-1 COM ENDEREÇO ---
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "endereco_id", referencedColumnName = "id")
-    @JsonManagedReference // Evita o loop no JSON
+    @JsonManagedReference
     private Endereco endereco;
 }

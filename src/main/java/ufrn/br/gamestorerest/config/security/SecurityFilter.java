@@ -16,7 +16,7 @@ import ufrn.br.gamestorerest.service.TokenService;
 
 import java.io.IOException;
 
-@Component // Anotação para que o Spring possa injetá-lo em outras classes
+@Component
 public class SecurityFilter extends OncePerRequestFilter {
 
     @Autowired
@@ -53,7 +53,6 @@ public class SecurityFilter extends OncePerRequestFilter {
     private String recuperarToken(HttpServletRequest request) {
         var authorizationHeader = request.getHeader("Authorization");
         if (authorizationHeader != null) {
-            // Remove o prefixo "Bearer " do token
             return authorizationHeader.replace("Bearer ", "");
         }
         return null;

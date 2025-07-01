@@ -27,8 +27,8 @@ public class ProdutoController {
     @Autowired
     private ProdutoService service;
 
-    @GetMapping
     // O 'PagedResourcesAssembler' agora é um parâmetro do métod0.
+    @GetMapping
     public ResponseEntity<PagedModel<EntityModel<ProdutoResponseDTO>>> listar(
             @PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao,
             PagedResourcesAssembler<ProdutoResponseDTO> assembler) {

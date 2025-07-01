@@ -5,7 +5,7 @@ import ufrn.br.gamestorerest.model.Usuario;
 public record UsuarioResponseDTO(
         Long id,
         String login,
-        EnderecoResponseDTO endereco // Endereço aninhado
+        EnderecoResponseDTO endereco
 ) {
     public UsuarioResponseDTO(Usuario usuario) {
         this(

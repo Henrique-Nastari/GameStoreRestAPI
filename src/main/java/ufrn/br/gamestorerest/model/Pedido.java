@@ -22,7 +22,7 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Anotação para que o Hibernate preencha a data automaticamente na criação.
+    // Hibernate preencha a data automaticamente na criação.
     @CreationTimestamp
     private LocalDateTime dataPedido;
 
@@ -37,9 +37,9 @@ public class Pedido {
     // --- RELACIONAMENTO COM PRODUTO (Muitos Pedidos para Muitos Produtos) ---
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-            name = "pedido_produtos", // Nome da nova "tabela de junção"
-            joinColumns = @JoinColumn(name = "pedido_id"), // Coluna que referencia esta entidade (Pedido)
-            inverseJoinColumns = @JoinColumn(name = "produto_id") // Coluna que referencia a outra entidade (Produto)
+            name = "pedido_produtos",
+            joinColumns = @JoinColumn(name = "pedido_id"),
+            inverseJoinColumns = @JoinColumn(name = "produto_id")
     )
     private Set<Produto> produtos = new HashSet<>();
 }

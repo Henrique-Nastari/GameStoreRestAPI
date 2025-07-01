@@ -25,7 +25,6 @@ public class SecurityConfig {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    // INJEÇÃO DO NOSSO FILTRO
     @Autowired
     private SecurityFilter securityFilter;
 
@@ -58,7 +57,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())
-                // ADICIONA NOSSO FILTRO NA CADEIA, ANTES DO FILTRO PADRÃO DE LOGIN
+                // ADICIONA O FILTRO NA CADEIA, ANTES DO FILTRO PADRÃO DE LOGIN
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }

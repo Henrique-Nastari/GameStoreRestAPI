@@ -3,14 +3,12 @@ package ufrn.br.gamestorerest.dto;
 import ufrn.br.gamestorerest.model.Produto;
 import java.math.BigDecimal;
 
-// Não estende mais RepresentationModel diretamente, pois a lógica foi para o Controller
 public record ProdutoResponseDTO(
         Long id,
         String nome,
         String descricao,
         BigDecimal preco,
 
-        // MUDANÇA: De String para CategoriaResponseDTO
         CategoriaResponseDTO categoria,
 
         String imageUrl

@@ -21,7 +21,6 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepository repository;
 
-    // INJEÇÃO DO REPOSITÓRIO DE CATEGORIA
     @Autowired
     private CategoriaRepository categoriaRepository;
 

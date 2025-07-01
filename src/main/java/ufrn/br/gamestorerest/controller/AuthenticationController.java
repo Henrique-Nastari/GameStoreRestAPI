@@ -50,7 +50,7 @@ public class AuthenticationController {
             return ResponseEntity.badRequest().build();
         }
 
-        // Passamos 'null' como último argumento para o novo campo 'endereco'.
+        // Passa 'null' como último argumento para o novo campo 'endereco'.
         var novoUsuario = new Usuario(null, dto.login(), passwordEncoder.encode(dto.senha()), dto.isAdmin(), null);
         this.usuarioRepository.save(novoUsuario);
 

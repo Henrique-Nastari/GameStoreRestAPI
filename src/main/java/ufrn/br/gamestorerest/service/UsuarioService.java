@@ -18,7 +18,7 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository repository;
 
-    // Métod0 para buscar o usuário atualmente logado
+    // Busca o usuário atualmente logado
     private Usuario getUsuarioLogado() {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return repository.findByLogin(userDetails.getUsername())
@@ -36,7 +36,6 @@ public class UsuarioService {
         Usuario usuario = getUsuarioLogado();
 
         // Verifica se o usuário já tem um endereço para atualizá-lo,
-        // ou cria um novo se não tiver.
         Endereco endereco = usuario.getEndereco();
         if (endereco == null) {
             endereco = new Endereco();
@@ -54,7 +53,7 @@ public class UsuarioService {
         // Associa o endereço ao usuário
         usuario.setEndereco(endereco);
 
-        // Salva o usuário. Graças ao 'cascade = CascadeType.ALL',
+        // Salva o usuário. Por causa do 'cascade = CascadeType.ALL',
         // o endereço será salvo ou atualizado junto.
         repository.save(usuario);
 

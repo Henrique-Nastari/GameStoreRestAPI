@@ -20,13 +20,12 @@ public class TokenService {
 
     private static final String ISSUER = "GameStore REST API";
 
-    // Aceita o UserDetails genérico do Spring
     public String gerarToken(UserDetails userDetails) {
         try {
             Algorithm algoritmo = Algorithm.HMAC256(secret);
             return JWT.create()
                     .withIssuer(ISSUER)
-                    .withSubject(userDetails.getUsername()) // Usa o métod0 padrão getUsername()
+                    .withSubject(userDetails.getUsername())
                     .withExpiresAt(dataExpiracao())
                     .sign(algoritmo);
         } catch (JWTCreationException exception){
@@ -43,7 +42,7 @@ public class TokenService {
                     .verify(tokenJWT)
                     .getSubject();
         } catch (JWTVerificationException exception) {
-            // Em vez de travar, podemos retornar nulo ou uma string vazia para o filtro lidar.
+            // Retorna nulo ou uma string vazia para o filtro lidar.
             return "";
         }
     }

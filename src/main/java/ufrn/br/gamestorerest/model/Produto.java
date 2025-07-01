@@ -54,12 +54,11 @@ public class Produto {
     @Column(name = "is_deleted")
     private LocalDateTime isDeleted;
 
-    // --- RELACIONAMENTO COM CATEGORIA ---
     // Define a relação de Muitos-Para-Um (Muitos Produtos para Uma Categoria)
     @ManyToOne(fetch = FetchType.EAGER)
     // Define a coluna de junção (chave estrangeira) na tabela 'produtos'
     @JoinColumn(name = "categoria_id", nullable = false)
-    // Evita o loop infinito na serialização JSON, indicando que este é o "lado de trás" da referência.
+    // Evita o loop infinito na serialização JSON
     @JsonBackReference
     private Categoria categoria;
 }
